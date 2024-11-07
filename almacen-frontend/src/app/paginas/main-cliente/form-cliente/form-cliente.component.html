@@ -1,0 +1,31 @@
+<mat-dialog-content>
+  <mat-toolbar><span>Formulario Cliente</span></mat-toolbar>
+
+  <div class="example-container">
+    <form [formGroup]="form"  class="example-container" #ClienteForm="ngForm">
+
+      <mat-form-field>
+        <input matInput placeholder="dnirucCliente" formControlName="dnirucCliente">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="nombreCliente" formControlName="nombreCliente">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="apellidoCliente" formControlName="apellidoCliente">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="telefonoCliente" formControlName="telefonoCliente">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="correoCliente" formControlName="correoCliente">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="direccionCliente" formControlName="direccionCliente">
+      </mat-form-field>
+
+      <br/>
+      <button mat-button (click)="operate()" [disabled]="form.invalid">Guardar</button>
+      <button mat-button color="accent" (click)="close()">Cancelar</button>
+    </form>
+  </div>
+</mat-dialog-content>

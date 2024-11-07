@@ -1,0 +1,66 @@
+
+<mat-form-field>
+  <mat-label>Buscar por NOMBRE, DNI, ETC</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por nombre" #input>
+</mat-form-field>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="idCliente">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.idCliente}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dnirucCliente">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> DNI o Ruc </th>
+      <td mat-cell *matCellDef="let row"> {{row.dnirucCliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nombreCliente">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombres </th>
+      <td mat-cell *matCellDef="let row"> {{row.nombreCliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="apellidoCliente">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellidos </th>
+      <td mat-cell *matCellDef="let row"> {{row.apellidoCliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="telefonoCliente">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
+      <td mat-cell *matCellDef="let row"> {{row.telefonoCliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="correoCliente">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo </th>
+      <td mat-cell *matCellDef="let row"> {{row.correoCliente}} </td>
+    </ng-container>
+    <ng-container matColumnDef="direccionCliente">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </th>
+      <td mat-cell *matCellDef="let row"> {{row.direccionCliente}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> ACTIONS </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-button (click)="openDialog(row)">
+          <mat-icon>mode_edit</mat-icon>
+        </button>
+
+        <button mat-button color="accent" (click)="delete(row.idCliente)" >
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="getDisplayedColumns()"></tr>
+    <tr mat-row *matRowDef="let row; columns: getDisplayedColumns();"></tr>
+
+  </table>
+
+  <button mat-fab color="primary" style="float: right;" (click)="openDialog()" >
+    <mat-icon>save</mat-icon>
+  </button>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of patients"></mat-paginator>
+
+</div>
+
